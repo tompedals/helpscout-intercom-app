@@ -11,7 +11,12 @@ class IntercomAppExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+        $container->getDefinition('intercom_app.client')->replaceArguments([$config['app_id'], $config['api_key']]);
     }
 }

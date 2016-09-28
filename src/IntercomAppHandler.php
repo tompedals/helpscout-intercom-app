@@ -3,6 +3,7 @@
 namespace TomPedals\HelpScoutApp\Intercom;
 
 use DateTime;
+use Intercom\IntercomClient;
 use TomPedals\HelpScoutApp\AppHandlerInterface;
 use TomPedals\HelpScoutApp\AppRequest;
 use Twig_Environment;
@@ -15,11 +16,18 @@ class IntercomAppHandler implements AppHandlerInterface
     private $twig;
 
     /**
-     * @param Twig_Environment $twig
+     * @var IntercomClient
      */
-    public function __construct(Twig_Environment $twig)
+    private $client;
+
+    /**
+     * @param Twig_Environment $twig
+     * @param IntercomClient $client
+     */
+    public function __construct(Twig_Environment $twig, IntercomClient $client)
     {
         $this->twig = $twig;
+        $this->client = $client;
     }
 
     /**
@@ -30,6 +38,7 @@ class IntercomAppHandler implements AppHandlerInterface
     public function handle(AppRequest $request)
     {
         return $this->twig->render('@IntercomApp/app.html.twig', [
+
         ]);
     }
 }
