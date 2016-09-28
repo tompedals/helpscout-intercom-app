@@ -13,3 +13,6 @@ services:
 
     intercom_app.client:
         class: Intercom\IntercomClient
+        arguments:
+            - null
+            - null
