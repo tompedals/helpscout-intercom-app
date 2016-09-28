@@ -1,0 +1,11 @@
+services:
+    intercom_app.handler:
+        class: TomPedals\HelpScoutApp\Intercom\IntercomAppHandler
+        arguments:
+            - '@twig'
+
+    intercom_app.action:
+        class: TomPedals\HelpScoutApp\AppAction
+        arguments:
+            - '@help_scout_app.request_factory'
+            - '@intercom_app.handler'

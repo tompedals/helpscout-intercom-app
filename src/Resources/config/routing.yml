@@ -1,0 +1,4 @@
+intercom_app_handler:
+    path: /
+    defaults:
+        _controller: intercom_app.action
