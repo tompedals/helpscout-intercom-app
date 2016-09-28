@@ -17,6 +17,8 @@ class IntercomAppExtension extends Extension
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
-        $container->getDefinition('intercom_app.client')->replaceArguments([$config['app_id'], $config['api_key']]);
+        $container->getDefinition('intercom_app.client')
+            ->replaceArgument(0, $config['app_id'])
+            ->replaceArgument(1, $config['api_key']);
     }
 }

@@ -6,7 +6,8 @@
     "keywords": ["helpscout", "intercom"],
     "require": {
         "php": ">=5.6",
-        "intercom/intercom-php": "^3.0"
+        "intercom/intercom-php": "^3.0",
+        "symfony/http-kernel": "^3.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.5",
