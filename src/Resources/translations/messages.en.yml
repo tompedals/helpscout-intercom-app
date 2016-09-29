@@ -1,0 +1,11 @@
+user_id: User ID
+name: Name
+signed_up_at: Signed up
+last_request_at: Last seen
+session_count: Session count
+unsubscribed_from_emails: Unsubscribed from emails
+user_agent_data: User agent
+company_id: Company ID
+plan: Plan
+monthly_spend: Monthly spend
+user_count: User count

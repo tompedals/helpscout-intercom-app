@@ -4,6 +4,8 @@ services:
         arguments:
             - '@twig'
             - '@intercom_app.client'
+            - null
+            - null
 
     intercom_app.action:
         class: TomPedals\HelpScoutApp\AppAction
@@ -13,6 +15,7 @@ services:
 
     intercom_app.client:
         class: Intercom\IntercomClient
+        public: false
         arguments:
             - null
             - null

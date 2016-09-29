@@ -1,1 +1,52 @@
-Intercom data
+{% spaceless %}
+    <p class="muted"><a href="https://app.intercom.io/a/apps/{{ appId }}/users/{{ user.id }}">View on Intercom</a></p>
+    <ul>
+        {% for name,value in user.attributes %}
+            <li>
+                {{ name|trans }}:
+                {% if name in ['signed_up_at', 'last_request_at'] %}
+                    {{ value|date }}
+                {% elseif name == 'unsubscribed_from_emails' %}
+                    {{ value ? 'Yes' : 'No' }}
+                {% else %}
+                    {{ value }}
+                {% endif %}
+            </li>
+        {% endfor %}
+
+        {% if user.location %}
+            <li>Country: {{ user.location.country_name }}</li>
+        {% endif %}
+    </ul>
+
+    {% for company in user.companies %}
+        <div class="toggleGroup open">
+            <h4><a href="#" class="toggleBtn"><i class="icon-case"></i>{{ company.name }}</a></h4>
+            <div class="toggle indent">
+                <ul>
+                    {% for name,value in company.attributes %}
+                        <li>{{ name|trans }}: {{ value }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% if user.socialProfiles is not empty %}
+        <div class="toggleGroup open">
+            <h4><a href="#" class="toggleBtn"><i class="icon-person"></i>Social profiles</a></h4>
+            <div class="toggle indent">
+                <ul>
+                    {% for socialProfile in user.socialProfiles %}
+                        <li>
+                            <a href="{{ socialProfile.url }}">
+                                {{ socialProfile.name }}
+                                {% if socialProfile.username is not empty %} ({{ socialProfile.username }}){% endif %}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+{% endspaceless %}
